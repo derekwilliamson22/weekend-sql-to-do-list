@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vendors/jquery-3.4.1.min.js"></script>
+    <script src="./scripts/client.js"></script>
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Weekend To-Do App</title>
+</head>
+<body>
+    <h1>Sweetie-Do's Task Manager</h1>
+    <h2>TEST GIT PUSH</h2>
+    <form class="taskInput" method="post">
+        <input type="text" name="taskName" id="taskName" placeholder="What's the task?">
+        <textarea name="textarea" id="taskDesc" cols="30" rows="10" placeholder="What else should we know?"></textarea>
+        <label for="taskTime">About how long will it take?</label>
+        <select name="taskTime" id="taskTime">
+            <option value="15">15min</option>
+            <option value="30">30min</option>
+            <option value="45">45min</option>
+            <option value="60">1hr</option>
+            <option value="75">1.25hr</option>
+            <option value="90">1.5hr</option>
+            <option value="105">1.75hr</option>
+            <option value="120">2hr</option>
+            <option value="135">2.25hr</option>
+            <option value="150">2.5hr</option>
+            <option value="165">2.75hr</option>
+            <option value="180">3hr</option>
+            <option value="195">3.25hr</option>
+            <option value="210">3.5hr</option>
+            <option value="225">3.75hr</option>
+            <option value="240">+4hr</option>
+        </select>
+        <button id="taskSubmitBtn" type="submit">Add task</button>
+    </form>
+    <div class="taskDisplay">
+    </div>
+</body>
+</html>
