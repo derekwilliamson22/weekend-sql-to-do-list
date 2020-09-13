@@ -76,3 +76,18 @@ app.delete('/tasks/:id',  (req, res) => {
       });
   
   });
+
+  app.put('/tasks/:id', (req, res)=>{
+    let id = req.params.id;
+    const queryString = `UPDATE "tasks" SET "task_complete" = 'TRUE' WHERE "id" = $1;`;
+    pool
+    .query(queryString, [id])
+    .then((response) => {
+        console.log('back from update', response);
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('error', error);
+        res.sendStatus(500);
+    });
+})//end updateTask
