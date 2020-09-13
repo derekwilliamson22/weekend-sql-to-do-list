@@ -14,7 +14,7 @@ function addTask(){
         task_time: $('#taskTimeIn').val()
     };
     $.ajax({
-        method: 'POST',
+        method: "POST",
         url: '/tasks',
         data: objectToSend
     })
@@ -31,7 +31,7 @@ function addTask(){
 function getTasks(){
     console.log('in getTasks');
     $.ajax({
-        method: 'GET',
+        method: "GET",
         url: '/tasks'
     })
     .then(function(response){
@@ -45,7 +45,7 @@ function getTasks(){
             <p class="taskDescTag">${task.task_desc}</p>
             <p class="taskTimeTag">Estimated time to complete:
             ${task.task_time}
-            </div>`)
+            </div>`);
         }
     })
     .catch(function(error){

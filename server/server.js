@@ -40,13 +40,13 @@ app.get('/tasks', (req, res)=>{
 }); // end /tasks GET
 
 app.post('/tasks', (req, res)=>{
-    console.log('/tasks POST hit:', req.body);
+    console.log('in /tasks POST hit:', req.body);
     const queryString = `INSERT INTO "tasks" (task_name, task_desc, task_time) VALUES ($1, $2, $3)`;
     pool
     .query(queryString, [
         req.body.task_name,
         req.body.task_desc,
-        req.body.task_time
+        req.body.task_time,
     ])
     .then((results)=>{
         res.sendStatus(201);
