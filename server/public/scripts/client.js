@@ -3,7 +3,8 @@ $(document).ready(onReady);
 function onReady(){
     $(document).on('click', '#taskSubmitBtn', addTask);
     $(document).on('click', '.deleteBtn', deleteTask);
-    $(document).on('click', '.updateBtn', updateTask)
+    //$(document).on('click', '.updateBtn', updateTask);
+    $(document).on('click', '.updateBtn', markCompleted);
     getTasks();
 } // end onReady
 
@@ -50,6 +51,9 @@ function getTasks(){
             <button type="button" data-id="${task.id}" class="updateBtn">Completed?</button>
             <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
             </div>`);
+            if (`${task.task_complete}` === true) {
+            ('div:`${task.id}`').addClass('completed');
+            }
         }
     })
     .catch(function(error){
@@ -72,19 +76,36 @@ function deleteTask(){
       console.log('error in delete', error);
     });
 } // end deleteTask
-
+/*
 function updateTask(){
-    console.log('updated');
-    let taskId = $(this).data('id');
+   let taskId = $(this).data('id');
+   $(this).parent().addClass('completed');
     $.ajax({
       method: 'PUT',
       url: `/tasks/${taskId}`
     }).then(function (response) {
       console.log('put', response);
-      getTasks();
     })
     .catch(function (error) {
-      console.log('error in delete', error);
+      console.log('error in update', error);
     });
-    }
+}*/
+
+function markCompleted(){
+$(this).parent().addClass('completed');
+let taskId = $(this).data('id');
+   $(this).parent().addClass('completed');
+    $.ajax({
+      method: 'PUT',
+      url: `/tasks/${taskId}`
+    }).then(function (response) {
+      console.log('put', response);
+    })
+    .catch(function (error) {
+      console.log('error in update', error);
+    });
+} // end markCompleted
+
+
+
 

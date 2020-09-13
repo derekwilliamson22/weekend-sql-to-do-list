@@ -20,9 +20,9 @@
     [x] description "desc"
     [x] estimated time to complete
     [x] required tools or other elements
-[ ] save task to database
-[ ] refresh (get) data/task from db and append to DOM
-[ ] append task to DOM (from db), with input data
-    [ ] add a completed button
-    [ ] add a delete button
-[ ] create a database.sql file with CREATE TABLE query and TODO list
+[x] save task to database
+[x] refresh (get) data/task from db and append to DOM
+[x] append task to DOM (from db), with input data
+    [x] add a completed button
+    [x] add a delete button
+[x] create a database.sql file with CREATE TABLE query and TODO list

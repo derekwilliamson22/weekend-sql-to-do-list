@@ -27,7 +27,7 @@ app.listen( port, ()=>{
 
 app.get('/tasks', (req, res)=>{
     console.log('/tasks GET hit');
-    const queryString = `SELECT * FROM "tasks"`;
+    const queryString = `SELECT * FROM "tasks" ORDER BY "id" ASC`;
     pool
     .query(queryString)
     .then((results)=>{
