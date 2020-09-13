@@ -56,3 +56,23 @@ app.post('/tasks', (req, res)=>{
         res.sendStatus(500);
     });
 }); // end POST
+
+app.delete('/tasks/:id',  (req, res) => {
+    let body = req.body;
+    let id = req.params.id; // id of the thing to delete
+    console.log('Delete route called with id of', id, body);
+  
+    // TODO - REPLACE BELOW WITH YOUR CODE
+    const queryString = `DELETE FROM "tasks" WHERE "id" = $1;`; // TODO
+    pool
+      .query(queryString, [id])
+      .then((response) => {
+        console.log('back from delete', response);
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.log('error', error);
+              res.sendStatus(500);
+      });
+  
+  });

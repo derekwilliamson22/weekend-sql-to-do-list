@@ -2,6 +2,7 @@ $(document).ready(onReady);
 
 function onReady(){
     $(document).on('click', '#taskSubmitBtn', addTask);
+    $(document).on('click', '.deleteBtn', deleteTask);
     getTasks();
 } // end onReady
 
@@ -44,7 +45,9 @@ function getTasks(){
             <h2 class="taskNameTag">${task.task_name}</h2>
             <p class="taskDescTag">${task.task_desc}</p>
             <p class="taskTimeTag">Estimated time to complete:
-            ${task.task_time}
+            ${task.task_time}</p>
+            <button type="button" data-id="${task.id}" >Completed?</button>
+            <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
             </div>`);
         }
     })
@@ -53,4 +56,19 @@ function getTasks(){
         console.log(error);
     });
 } // end getTasks
+
+function deleteTask(){
+    console.log('deleted');
+    let taskId = $(this).data('id');
+    $.ajax({
+      method: 'DELETE',
+      url: `/tasks/${taskId}`
+    }).then(function (response) {
+      console.log('deleted', response);
+      getTasks();
+    })
+    .catch(function (error) {
+      console.log('error in delete', error);
+    });
+} // end deleteTask
 
