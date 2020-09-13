@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vendors/jquery-3.4.1.min.js"></script>
     <script src="./scripts/client.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/style.css">
     <title>Weekend To-Do App</title>
 </head>
@@ -12,10 +13,10 @@
     <h1>Sweetie-Do's Task Manager</h1>
     <h2>TEST GIT PUSH</h2>
     <form class="taskInput" method="post">
-        <input type="text" name="taskName" id="taskName" placeholder="What's the task?">
-        <textarea name="textarea" id="taskDesc" cols="30" rows="10" placeholder="What else should we know?"></textarea>
+        <input type="text" name="taskName" id="taskNameIn" placeholder="What's the task?">
+        <textarea name="textarea" id="taskDescIn" cols="30" rows="10" placeholder="What else should we know?"></textarea>
         <label for="taskTime">About how long will it take?</label>
-        <select name="taskTime" id="taskTime">
+        <select name="taskTime" id="taskTimeIn">
             <option value="15">15min</option>
             <option value="30">30min</option>
             <option value="45">45min</option>
