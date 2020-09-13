@@ -6,33 +6,35 @@ function onReady(){
 } // end onReady
 
 function addTask(){
-    console.log( 'in addTask' );
-     const objectToSend={
-        task_name: $( '#taskNameIn' ).val(),
-        task_desc: $( '#taskDescIn' ).val(),
-        task_time: $( '#taskTimeIn' ).val()
+    console.log('in addTask');
+     const objectToSend = {
+        task_name: $('#taskNameIn').val(),
+        task_desc: $('#taskDescIn').val(),
+        task_time: $('#taskTimeIn').val()
     }
+    console.log('sending this:', objectToSend);
     $.ajax({
         method: 'POST',
         url: '/tasks',
         data: objectToSend
-    }).then( function( response ){
-        console.log( 'back from POST:', response );
+    }).then(function(response){
+        console.log('back from POST:', response);
         getTasks();
-    }).catch( function( error ){
-        console.log( error );
-        alert( 'somethings amiss' )
+    }).catch(function(error){
+        console.log(error);
+        alert('somethings amiss')
     })
 } // end addMovie
 
 function getTasks(){
+    console.log('in getTasks');
     $.ajax({
         method: 'GET',
         url: '/tasks'
-    }).then( function( response ){
-        let el = $( '.taskDisplay' );
+    }).then(function(response){
+        let el = $('.taskDisplay');
         el.empty();
-        for( let i=0; i< response.length; i++ ){
+        for(let i=0; i< response.length; i++){
             let task = response[i];
             el.append(`
             <div class="taskOut" data-id="${task.id}>
@@ -42,9 +44,9 @@ function getTasks(){
             ${task.task_time}
             </div>`)
         }
-    }).catch( function( error ){
-        console.log( error );
-        alert( 'somethings amiss' )
+    }).catch(function(error){
+        console.log(error);
+        alert('somethings amiss')
     })
 } // end getTasks
 
