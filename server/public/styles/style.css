@@ -1,19 +1,23 @@
 body {
-    background-color: peachpuff;
+  background-color: rgb(227, 227, 227);
 }
 
 .taskDisplay {
-display: inline-block;
+  display: inline-block;
 }
 
 .taskOut {
-display: inline-block;
-border: 2px solid black;    
+  display: inline-block;
+  border: 2px solid black;
 }
 
 /* hat tip to this site for how to access .data() in css
 https://css-tricks.com/a-complete-guide-to-data-attributes/#styling
 */
-[data-status="complete"] {
-    background-color: lightgreen;
-    }
+[data-status='complete'] {
+  background-color: rgb(119, 216, 122);
+}
+
+[data-status='incomplete'] {
+  background-color: rgb(193, 130, 130);
+}
