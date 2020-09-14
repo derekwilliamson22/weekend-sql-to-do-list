@@ -1,9 +1,18 @@
-body {
-  background-color: rgb(227, 227, 227);
+main {
+  background-color: #5e8df4;
 }
 
-.taskDisplay {
-  display: inline-block;
+#taskSubmitBtn {
+    background-color: seagreen;
+border: 1px solid black;
+}
+
+.album {
+margin-top: 15px;
+}
+
+.card-body {
+margin-top: 15px;
 }
 
 .taskOut {
@@ -20,4 +29,14 @@ https://css-tricks.com/a-complete-guide-to-data-attributes/#styling
 
 [data-status='incomplete'] {
   background-color: rgb(193, 130, 130);
+}
+
+.updateBtn {
+  background-color: rgb(119, 216, 122);
+  color: black;
+}
+
+.deleteBtn {
+  background-color: rgb(193, 130, 130);
+  color: black;
 }

@@ -1,51 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="./vendors/jquery.min.js"></script>
     <script src="./scripts/client.js"></script>
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Weekend To-Do App</title>
   </head>
-  <body>
-    <h1>Sweetie-Do's Task Manager</h1>
-    <div class="taskInput">
-      <input
-        type="text"
-        name="taskName"
-        id="taskNameIn"
-        placeholder="What's the task?"
-      />
-      <textarea
-        name="textarea"
-        id="taskDescIn"
-        cols="30"
-        rows="10"
-        placeholder="What else should we know?"
-      ></textarea>
-      <label for="taskTime">About how long will it take?</label>
-      <select name="taskTime" id="taskTimeIn">
-        <option value=">15min">>15min</option>
-        <option value="15min">15min</option>
-        <option value="30min">30min</option>
-        <option value="45min">45min</option>
-        <option value="1hr">1hr</option>
-        <option value="1.25hr">1.25hr</option>
-        <option value="1.5hr">1.5hr</option>
-        <option value="1.75hr">1.75hr</option>
-        <option value="2hr">2hr</option>
-        <option value="2.25hr">2.25hr</option>
-        <option value="2.5hr">2.5hr</option>
-        <option value="2.75hr">2.75hr</option>
-        <option value="3hr">3hr</option>
-        <option value="3.25hr">3.25hr</option>
-        <option value="3.5hr">3.5hr</option>
-        <option value="3.75hr">3.75hr</option>
-        <option value="+4hr">+4hr</option>
-      </select>
-      <button id="taskSubmitBtn" type="submit">Add task</button>
-    </div>
-    <div class="taskDisplay"></div>
-  </body>
+  <body class="bg-light">
+    <main role="main">
+
+<div class="container">
+<div class="py-5 text-center">
+<h2>Sweetie-Do's Task Manager</h2>
+<p class="lead">Got too many chores? Let Sweetie-Do them for you! Enter the information below and we'll Sweetie-Do it soon!</p>
+</div>
+<div class="row">
+<div class="col-md-8 order-md-1">
+<form>
+<div class="row">
+<div class="col-md-6 mb-3">
+<label for="taskName">Task Name:</label>
+<input type="text" class="form-control" id="taskNameIn" placeholder="e.g. Mow the lawn" value="">
+</div>
+</div>
+<div class="mb-3">
+<label for="taskDescription">Task Description:</label>
+<input type="textarea" class="form-control" id="taskDescIn" placeholder="e.g. mind the chicken coop">
+</div>
+<div class="row">
+<div class="col-md-5 mb-3">
+<label for="taskTime">Estimated time to complete:</label>
+<select class="custom-select d-block w-100" id="taskTimeIn">
+<option value="">Choose...</option>
+<option value=">15min">>15min</option>
+<option value="15min">15min</option>
+<option value="30min">30min</option>
+<option value="45min">45min</option>
+<option value="1hr">1hr</option>
+<option value="1.25hr">1.25hr</option>
+<option value="1.5hr">1.5hr</option>
+<option value="1.75hr">1.75hr</option>
+<option value="2hr">2hr</option>
+<option value="2.25hr">2.25hr</option>
+<option value="2.5hr">2.5hr</option>
+<option value="2.75hr">2.75hr</option>
+<option value="3hr">3hr</option>
+<option value="3.25hr">3.25hr</option>
+<option value="3.5hr">3.5hr</option>
+<option value="3.75hr">3.75hr</option>
+<option value="+4hr">+4hr</option>
+</select>
+</div>
+</div>
+<button class="btn btn-primary btn-lg btn-block" type="submit" id="taskSubmitBtn" >Add Task!</button>
+</form>
+</div>
+</div>
+<div class="album">
+<div class="container">
+<div class="row taskDisplay">
+</div>
+</div>
+</div>
+</main>
+</body>
 </html>
