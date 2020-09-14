@@ -9,20 +9,6 @@ function onReady() {
 
 function getTasks() {
   console.log('in getTasks');
-  // found this code at: https://www.arclab.com/en/kb/htmlcss/display-date-time-javascript-php-ssi.html
-  var dt = new Date();
-  $('#dateTime').append(
-    ('0' + dt.getDate()).slice(-2) +
-      '.' +
-      ('0' + (dt.getMonth() + 1)).slice(-2) +
-      '.' +
-      dt.getFullYear() +
-      ' ' +
-      ('0' + dt.getHours()).slice(-2) +
-      ':' +
-      ('0' + dt.getMinutes()).slice(-2)
-  );
-
   $.ajax({
     method: 'GET',
     url: '/tasks',
