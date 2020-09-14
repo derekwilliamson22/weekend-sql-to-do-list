@@ -1,26 +1,39 @@
 $(document).ready(onReady);
 
-function onReady(){
-    $(document).on('click', '#taskSubmitBtn', addTask);
-    $(document).on('click', '.deleteBtn', deleteTask);
-    $(document).on('click', '.updateBtn', markCompleted);
-    getTasks();
+function onReady() {
+  $(document).on('click', '#taskSubmitBtn', addTask);
+  $(document).on('click', '.deleteBtn', deleteTask);
+  $(document).on('click', '.updateBtn', markCompleted);
+  getTasks();
 } // end onReady
 
-function getTasks(){
-    console.log('in getTasks');
-    $.ajax({
-        method: "GET",
-        url: '/tasks'
-    })
-    .then(function(response){
-        let el = $('.taskDisplay');
-        el.empty();
-        for(let i=0; i< response.length; i++){
-            let task = response[i];
-            if (`${task.task_complete}` === 'false')
-            {
-            el.append(`
+function getTasks() {
+  console.log('in getTasks');
+  // found this code at: https://www.arclab.com/en/kb/htmlcss/display-date-time-javascript-php-ssi.html
+  var dt = new Date();
+  $('#dateTime').append(
+    ('0' + dt.getDate()).slice(-2) +
+      '.' +
+      ('0' + (dt.getMonth() + 1)).slice(-2) +
+      '.' +
+      dt.getFullYear() +
+      ' ' +
+      ('0' + dt.getHours()).slice(-2) +
+      ':' +
+      ('0' + dt.getMinutes()).slice(-2)
+  );
+
+  $.ajax({
+    method: 'GET',
+    url: '/tasks',
+  })
+    .then(function (response) {
+      let el = $('.taskDisplay');
+      el.empty();
+      for (let i = 0; i < response.length; i++) {
+        let task = response[i];
+        if (`${task.task_complete}` === 'false') {
+          el.append(`
             <div class="taskOut" data-id="${task.id}" data-status="incomplete">
             <h2 class="taskNameTag">${task.task_name}</h2>
             <p class="taskDescTag">${task.task_desc}</p>
@@ -29,54 +42,52 @@ function getTasks(){
             <button type="button" data-id="${task.id}" class="updateBtn">Completed?</button>
             <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
             </div>`);
-            }
-            else if (`${task.task_complete}` === 'true') {
-                el.append(`
+        } else if (`${task.task_complete}` === 'true') {
+          el.append(`
                 <div class="taskOut" data-id="${task.id}" data-status="complete">
-                <h2 class="taskNameTag">${task.task_name}</h2>
-                <p class="taskDescTag">${task.task_desc}</p>
-                <p class="taskTimeTag">Estimated time to complete:
-                ${task.task_time}</p>
+                <h2 class="taskNameTag">${task.task_name} is finished!</h2>
+                <p class="taskCompletedTime">Task Completed: ${task.task_time_completed}</p>
                 <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
-                </div>`)
-            }
-    }
-    }).catch(function(err){
-        alert('somethings amiss');
-        console.log(err);
+                </div>`);
+        }
+      }
+    })
+    .catch(function (err) {
+      alert('somethings amiss');
+      console.log(err);
     });
- } // end getTasks
+} // end getTasks
 
-
-function addTask(){
-    console.log('in addTask');
-     const objectToSend = {
-        task_name: $('#taskNameIn').val(),
-        task_desc: $('#taskDescIn').val(),
-        task_time: $('#taskTimeIn').val()
-    };
-    $.ajax({
-        method: "POST",
-        url: '/tasks',
-        data: objectToSend
+function addTask() {
+  console.log('in addTask');
+  const objectToSend = {
+    task_name: $('#taskNameIn').val(),
+    task_desc: $('#taskDescIn').val(),
+    task_time: $('#taskTimeIn').val(),
+  };
+  $.ajax({
+    method: 'POST',
+    url: '/tasks',
+    data: objectToSend,
+  })
+    .then(function (response) {
+      console.log('back from POST:', response);
+      getTasks();
     })
-    .then(function(response){
-        console.log('back from POST:', response);
-        getTasks();
-    })
-    .catch(function(err){
-        alert('somethings amiss');
-        console.log(err);
+    .catch(function (err) {
+      alert('somethings amiss');
+      console.log(err);
     });
 } // end addTask
 
-function deleteTask(){
-    console.log('deleted');
-    let taskId = $(this).data('id');
-    $.ajax({
-      method: 'DELETE',
-      url: `/tasks/${taskId}`
-    }).then(function (response) {
+function deleteTask() {
+  console.log('deleted');
+  let taskId = $(this).data('id');
+  $.ajax({
+    method: 'DELETE',
+    url: `/tasks/${taskId}`,
+  })
+    .then(function (response) {
       console.log('deleted', response);
       getTasks();
     })
@@ -85,13 +96,14 @@ function deleteTask(){
     });
 } // end deleteTask
 
-function markCompleted(){
-   let taskId = $(this).data('id');
-   $(this).parent().data('status', 'completed');
-    $.ajax({
-      method: 'PUT',
-      url: `/tasks/${taskId}`
-    }).then(function (response) {
+function markCompleted() {
+  let taskId = $(this).data('id');
+  $(this).parent().data('status', 'completed');
+  $.ajax({
+    method: 'PUT',
+    url: `/tasks/${taskId}`,
+  })
+    .then(function (response) {
       console.log('put', response);
       getTasks();
     })
@@ -115,6 +127,3 @@ let taskId = $(this).data('id');
     });
 } // end markCompleted
 */
-
-
-
