@@ -44,3 +44,14 @@ https://css-tricks.com/a-complete-guide-to-data-attributes/#styling
   background-color: rgb(193, 130, 130);
   color: black;
 }
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #5e8df4;
+}
+  
+  footer p {
+    margin-bottom: .25rem;
+    color: snow;
+  }
