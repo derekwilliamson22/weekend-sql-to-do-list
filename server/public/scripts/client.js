@@ -19,38 +19,39 @@ function getTasks() {
       for (let i = 0; i < response.length; i++) {
         let task = response[i];
         if (`${task.task_complete}` === 'false') {
-          el.append(`<div class="col-md-4 taskOut" data-id="${task.id}" data-status="incomplete">
-          <div class="card mb-4 shadow-sm">
-            <div class="bd-placeholder-img card-img-top">
-                <div class="card-body">
-                <h3 class="taskNameTag">${task.task_name}</h3>
-                <p class="taskDescTag">${task.task_desc}</p>
-                <p class="taskTimeTag">Estimated time to complete: ${task.task_time}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                 <div class="btn-group">
-                  <button type="button" data-id="${task.id}" class="btn btn-sm btn-outline-secondary updateBtn">Completed?</button>
-                  <button type="button" data-id="${task.id}" class="btn btn-sm btn-outline-secondary deleteBtn">Delete</button>
-                </div>
-                </div>
-            </div>
-            </div>
-          </div>
-        </div>`);
-        } else if (`${task.task_complete}` === 'true') {
-          el.append(
-            `<div class="col-md-4 taskOut" data-id="${task.id}" data-status="complete">
-            <div class="card mb-4 shadow-sm">
+          el.append(`
+          <div class="col-md-4 taskOut" data-id="${task.id}" data-status="incomplete">
+            <div class="card mb-4 shadow-sm taskCard">
               <div class="bd-placeholder-img card-img-top">
-                  <div class="card-body">
+                <div class="card-body">
+                  <h3 class="taskNameTag">${task.task_name}</h3>
+                  <p class="taskDescTag">${task.task_desc}</p>
+                  <p class="taskTimeTag">Estimated time to complete: ${task.task_time}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                   <div class="btn-group">
+                    <button type="button" data-id="${task.id}" class="btn btn-sm btn-outline-secondary updateBtn">Completed?</button>
+                    <button type="button" data-id="${task.id}" class="btn btn-sm btn-outline-secondary deleteBtn">Delete</button>
+                   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`);
+        } else if (`${task.task_complete}` === 'true') {
+          el.append(`
+          <div class="col-md-4 taskOut" data-id="${task.id}" data-status="complete">
+            <div class="card mb-4 shadow-sm taskCard">
+              <div class="bd-placeholder-img card-img-top">
+                <div class="card-body">
                   <h3 class="taskNameTag">${task.task_name} is finished!</h3>
                   <p class="taskDescTag">${task.task_desc}</p>
                   <p class="taskCompletedTime">Task Completed: ${task.task_time_completed}</p>
                   <div class="d-flex justify-content-between align-items-center">
                    <div class="btn-group">
                     <button type="button" data-id="${task.id}" class="btn btn-sm btn-outline-secondary deleteBtn">Delete</button>
+                   </div>
                   </div>
-                  </div>
-              </div>
+                </div>
               </div>
             </div>
           </div>`

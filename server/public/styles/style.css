@@ -1,8 +1,4 @@
-main {
-  background-color: #5e8df4;
-}
-
-html {
+main, html, body{
   background-color: #5e8df4;
 }
 
@@ -17,6 +13,10 @@ html {
 
 .card-body {
   margin-top: 15px;
+}
+
+.taskCard {
+    margin-top: 1.5rem;
 }
 
 .taskOut {
