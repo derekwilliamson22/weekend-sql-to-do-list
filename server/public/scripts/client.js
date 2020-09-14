@@ -8,6 +8,47 @@ function onReady(){
     getTasks();
 } // end onReady
 
+function getTasks(){
+    console.log('in getTasks');
+    $.ajax({
+        method: "GET",
+        url: '/tasks'
+    })
+    .then(function(response){
+        let el = $('.taskDisplay');
+        el.empty();
+        for(let i=0; i< response.length; i++){
+            let task = response[i];
+            if (`${task.task_complete}` === 'false')
+            {
+            el.append(`
+            <div class="taskOut" data-id="${task.id}" data-status="incomplete">
+            <h2 class="taskNameTag">${task.task_name}</h2>
+            <p class="taskDescTag">${task.task_desc}</p>
+            <p class="taskTimeTag">Estimated time to complete:
+            ${task.task_time}</p>
+            <button type="button" data-id="${task.id}" class="updateBtn">Completed?</button>
+            <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
+            </div>`);
+            }
+            else if (`${task.task_complete}` === 'true') {
+                el.append(`
+                <div class="taskOut" data-id="${task.id}" data-status="complete">
+                <h2 class="taskNameTag">${task.task_name}</h2>
+                <p class="taskDescTag">${task.task_desc}</p>
+                <p class="taskTimeTag">Estimated time to complete:
+                ${task.task_time}</p>
+                <button type="button" data-id="${task.id}" class="updateBtn">Completed?</button>
+                <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
+                </div>`)
+            }
+    }
+    }).catch(function(err){
+        alert('somethings amiss');
+        console.log(err);
+    });
+ } // end getTasks
+
 
 function addTask(){
     console.log('in addTask');
@@ -31,37 +72,6 @@ function addTask(){
     });
 } // end addTask
 
-function getTasks(){
-    console.log('in getTasks');
-    $.ajax({
-        method: "GET",
-        url: '/tasks'
-    })
-    .then(function(response){
-        let el = $('.taskDisplay');
-        el.empty();
-        for(let i=0; i< response.length; i++){
-            let task = response[i];
-            el.append(`
-            <div class="taskOut" data-id="${task.id}">
-            <h2 class="taskNameTag">${task.task_name}</h2>
-            <p class="taskDescTag">${task.task_desc}</p>
-            <p class="taskTimeTag">Estimated time to complete:
-            ${task.task_time}</p>
-            <button type="button" data-id="${task.id}" class="updateBtn">Completed?</button>
-            <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
-            </div>`);
-            if (`${task.task_complete}` === true) {
-            ('div:`${task.id}`').addClass('completed');
-            }
-        }
-    })
-    .catch(function(error){
-        alert('somethings amiss');
-        console.log(error);
-    });
-} // end getTasks
-
 function deleteTask(){
     console.log('deleted');
     let taskId = $(this).data('id');
@@ -76,26 +86,27 @@ function deleteTask(){
       console.log('error in delete', error);
     });
 } // end deleteTask
-/*
-function updateTask(){
+
+function markCompleted(){
    let taskId = $(this).data('id');
-   $(this).parent().addClass('completed');
+   $(this).parent().data('status', 'completed');
     $.ajax({
       method: 'PUT',
       url: `/tasks/${taskId}`
     }).then(function (response) {
       console.log('put', response);
+      getTasks();
     })
     .catch(function (error) {
       console.log('error in update', error);
     });
-}*/
+}
 
+/*
 function markCompleted(){
 $(this).parent().addClass('completed');
 let taskId = $(this).data('id');
-   $(this).parent().addClass('completed');
-    $.ajax({
+   $.ajax({
       method: 'PUT',
       url: `/tasks/${taskId}`
     }).then(function (response) {
@@ -105,7 +116,7 @@ let taskId = $(this).data('id');
       console.log('error in update', error);
     });
 } // end markCompleted
-
+*/
 
 
 
