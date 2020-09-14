@@ -3,7 +3,6 @@ $(document).ready(onReady);
 function onReady(){
     $(document).on('click', '#taskSubmitBtn', addTask);
     $(document).on('click', '.deleteBtn', deleteTask);
-    //$(document).on('click', '.updateBtn', updateTask);
     $(document).on('click', '.updateBtn', markCompleted);
     getTasks();
 } // end onReady
@@ -38,7 +37,6 @@ function getTasks(){
                 <p class="taskDescTag">${task.task_desc}</p>
                 <p class="taskTimeTag">Estimated time to complete:
                 ${task.task_time}</p>
-                <button type="button" data-id="${task.id}" class="updateBtn">Completed?</button>
                 <button type="button" data-id="${task.id}" class="deleteBtn">Delete Task</button>
                 </div>`)
             }

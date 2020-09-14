@@ -10,3 +10,10 @@ display: inline-block;
 display: inline-block;
 border: 2px solid black;    
 }
+
+/* hat tip to this site for how to access .data() in css
+https://css-tricks.com/a-complete-guide-to-data-attributes/#styling
+*/
+[data-status="complete"] {
+    background-color: lightgreen;
+    }
