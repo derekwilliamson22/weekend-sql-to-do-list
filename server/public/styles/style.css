@@ -3,16 +3,16 @@ main {
 }
 
 #taskSubmitBtn {
-    background-color: seagreen;
-border: 1px solid black;
+  background-color: seagreen;
+  border: 1px solid black;
 }
 
 .album {
-margin-top: 15px;
+  margin-top: 15px;
 }
 
 .card-body {
-margin-top: 15px;
+  margin-top: 15px;
 }
 
 .taskOut {
