@@ -22,7 +22,7 @@ else {
   console.log("Assuming we're running locally");
   pool = new pg.Pool({
     database: 'weekend_to_do_app',
-    host: 'localhost',
+    host: 'local',
     port: 5432,
     max: 12,
     idleTimeoutMillis: 40000,
