@@ -85,6 +85,9 @@ function addTask() {
       alert('somethings amiss');
       console.log(err);
     });
+    $('#taskNameIn').val('');
+    $('#taskDescIn').val('');
+    $('#taskTimeIn').val('');
 } // end addTask
 
 function deleteTask() {
